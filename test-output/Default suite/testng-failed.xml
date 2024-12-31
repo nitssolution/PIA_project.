@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
+    <classes>
+      <class name="com.pia.user_testscript.ScriptUsersNewAccount">
+        <methods>
+          <include name="verifyTC013_UserCancelUserAccount"/>
+          <include name="BeforeTest"/>
+          <include name="afterTest"/>
+          <include name="beforeSuite"/>
+          <include name="aftersuite"/>
+          <include name="BeforeClass"/>
+          <include name="afterMothod"/>
+          <include name="BedforeMethod"/>
+        </methods>
+      </class> <!-- com.pia.user_testscript.ScriptUsersNewAccount -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
