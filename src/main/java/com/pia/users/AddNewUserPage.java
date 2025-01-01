@@ -87,6 +87,8 @@ public class AddNewUserPage extends CommonPage {
 
 
 	//=============Functions=============//
+	
+	
 	/*
 
    This method will create new user account  by unique name and email 
@@ -97,7 +99,7 @@ public class AddNewUserPage extends CommonPage {
 		Map<String, String> mapDatas=   datas.getTestCaseData(tcId);
 
 		util.click(userNameTB);
-		util.sendValue(userNameTB, mapDatas.get("UserName"));
+		util.sendValue(userNameTB, mapDatas.get("User Name"));
 		util.click(emailTB);
 
 		util.sendValue(emailTB, mapDatas.get("Email"));
@@ -111,8 +113,8 @@ public class AddNewUserPage extends CommonPage {
 		util.elementToBeClickable(AssociatedBrandDropDun, 60);
 		util.click(AssociatedBrandDropDun);
 		select_Brand(mapDatas.get("Brand"));
+		
 		util.elementToBeClickable(roleDropDun, 60);
-
 		util.click(roleDropDun);
 		select_Role(mapDatas.get("Role"));
 		util.elementToBeClickable(saveBT, 60);
@@ -128,7 +130,7 @@ public class AddNewUserPage extends CommonPage {
 		Thread.sleep(5000);	
 
 	}
-
+	   /**/
 	public void blanckUserNameTextBox (String tcId ) throws InterruptedException  {
 		Thread.sleep(2000);
 		Map<String, String> mapDatas=   datas.getTestCaseData(tcId);
@@ -162,6 +164,7 @@ public class AddNewUserPage extends CommonPage {
 
 
 	}
+	   /**/
 	public void  blanckUserEmailTextBox(String tcId ) throws InterruptedException  {
 		Thread.sleep(2000);
 		Map<String, String> mapDatas=   datas.getTestCaseData(tcId);
@@ -197,7 +200,7 @@ public class AddNewUserPage extends CommonPage {
 		Thread.sleep(5000);
 
 	}
-
+	   /**/
 	public void blanckUserPasswordTextBox(String tcId ) throws InterruptedException  {
 		Thread.sleep(2000);
 		Map<String, String> mapDatas=   datas.getTestCaseData(tcId);
@@ -232,6 +235,8 @@ public class AddNewUserPage extends CommonPage {
 
 	}
 
+	   /**/
+
 	public void blanckComfirmPassowrdTextBox(String tcId ) throws InterruptedException  {
 
 		Map<String, String> mapDatas=   datas.getTestCaseData(tcId);
@@ -260,14 +265,12 @@ public class AddNewUserPage extends CommonPage {
 
 		Assert.assertEquals(actuleBlankuserNameMessage,mapDatas.get("Message") );
 
-		Thread.sleep(5000);
+		Thread.sleep(4000);
 
 	}
 
-
-
-
-	public void clickOnOnliySelect(String tcId) {
+	   /**/
+	public void withoutSelectRole(String tcId) {
 		Map<String, String> mapDatas=   datas.getTestCaseData(tcId);
 
 		util.sendValue(userNameTB, mapDatas.get("UserName"));
@@ -279,44 +282,57 @@ public class AddNewUserPage extends CommonPage {
 		util.sendValue(comfirmPassowrdTB, mapDatas.get("ConfirmPassowrd"));
 
 		util.click(AssociatedBrandDropDun);
-		if (mapDatas.get("Brand")==null) {
-			WebElement we=	util.getDriver().findElement(By.xpath("(//span[text()='- Select Brand-'])[2]"));
-			util.elementToBeClickable(we, 60);
-
-
-			util.mouseOver(we);
-			util.mouseClick(we);
-
-		}else {
-			select_Brand(mapDatas.get("Brand"));
-
-
-		}
-
-		util.click(roleDropDun);
-
-		if (mapDatas.get("Role")==null) {
-			WebElement we= util.getDriver().findElement(By.xpath("(//span[text()='- Select Role-'])[2]"));
-
-			util.elementToBeClickable(we, 60);
-			util.mouseOver(we);
-			util.mouseClick(we);
-
-		}else {
-
-			select_Role(mapDatas.get("Role"));			
-
-		}
-
+		select_Brand(mapDatas.get("Brand"));
 
 		util.click(saveBT);
-
+		
 		util.visibilityOfElement(validetionAccountMessage, 60);
 
 		String actuleBlankuserNameMessage= util.getUIText(validetionAccountMessage);
 
 		Assert.assertEquals(actuleBlankuserNameMessage, mapDatas.get("Message"));
 
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void withoutSelectBrand(String tcId) {
+		Map<String, String> mapDatas=   datas.getTestCaseData(tcId);
+
+		util.sendValue(userNameTB, mapDatas.get("UserName"));
+
+		util.sendValue(emailTB, mapDatas.get("Email"));
+
+		util.sendValue(passowrdTB, mapDatas.get("Passowrd"));
+
+		util.sendValue(comfirmPassowrdTB, mapDatas.get("ConfirmPassowrd"));
+
+		util.click(AssociatedBrandDropDun);
+		String brand="- Select Brand-";
+		select_Brand(brand);
+		
+		util.click(roleDropDun);
+		select_Role(mapDatas.get("Role"));
+
+		util.click(saveBT);
+//Role Must Have Some Valu
+//Role Must Have Some Value		
+		
+		util.visibilityOfElement(validetionAccountMessage, 60);
+
+		String actuleBlankuserNameMessage= util.getUIText(validetionAccountMessage);
+
+		Assert.assertEquals(actuleBlankuserNameMessage, mapDatas.get("Message"));
+
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 
 
 

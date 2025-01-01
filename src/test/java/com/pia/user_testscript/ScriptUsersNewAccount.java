@@ -23,7 +23,7 @@ public class ScriptUsersNewAccount extends BaseClass {
 		common.nevigat_Add_New_UserPage();
 		AddNewUserPage userNewPage=	 new AddNewUserPage();
 		userNewPage.verifyTitleOfAdd_new_user_Page("TC001");
-			
+
 	}
 
 
@@ -35,19 +35,19 @@ public class ScriptUsersNewAccount extends BaseClass {
 		common.nevigat_Add_New_UserPage();
 		AddNewUserPage userNewPage= new AddNewUserPage();
 		userNewPage.verify_PasswordConditionsMassage("TC002");
-		
+
 
 	}
 	/*This method will verify user new  account   */
-	//@Test(priority = 3)
+	@Test(priority = 3)
 	public void VerifyTC003_UserNewAccount() throws InterruptedException {
 
 		CommonPage common=	  new CommonPage();
 		common.clickOnMenuBT();
 		common.nevigat_Add_New_UserPage();
 		AddNewUserPage  userPage=new AddNewUserPage();	
-		userPage.createUserNewAccount("TC003");
-	
+		userPage.createUserNewAccount("TC00T");
+
 
 	}
 
@@ -126,22 +126,28 @@ public class ScriptUsersNewAccount extends BaseClass {
 		userPage.blanckComfirmPassowrdTextBox("TC010");
 	}
 
-	
-	 // @Test(priority=11)
-	   public void verifyTC011_WithoutSelectBrandMessage() { CommonPage
-	  common= new CommonPage(); common.clickOnMenuBT();
-	  common.nevigat_Add_New_UserPage(); AddNewUserPage userPage=new AddNewUserPage();
-	  userPage.clickOnOnliySelect("TC011"); }
-	  
-	 
-	//@Test(priority=12)
-	  public void verifyTC012_WithoutSelectRoleMessage() { CommonPage common= new
-	  CommonPage(); common.clickOnMenuBT(); common.nevigat_Add_New_UserPage();
-	  AddNewUserPage userPage=new AddNewUserPage();
-	  userPage.clickOnOnliySelect("TC012");
-	  
-	  }
-	 
+   /**/
+    @Test(priority=11)
+	public void verifyTC011_WithoutSelectBrandMessage() { 
+		CommonPage common= new CommonPage();
+		common.clickOnMenuBT();
+		common.nevigat_Add_New_UserPage(); 
+		AddNewUserPage userPage=new AddNewUserPage();
+		userPage.withoutSelectBrand("TC011"); 
+		
+		
+		}
+
+    /**/
+	@Test(priority=12)
+	public void verifyTC012_WithoutSelectRole() { 
+		        CommonPage common= new
+				CommonPage(); common.clickOnMenuBT(); common.nevigat_Add_New_UserPage();
+				AddNewUserPage userPage=new AddNewUserPage();
+				userPage.withoutSelectRole("TC012");
+
+	}
+
 
 	/*This method will  verify title then user will click cancel button  */
 	@Test(priority = 13)
