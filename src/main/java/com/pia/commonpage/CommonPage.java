@@ -73,6 +73,9 @@ public class CommonPage {
 
 	@FindBy(xpath = "//button[@id='cancel-btn']")
 	protected WebElement resetBT;
+	
+	@FindBy(xpath = "//input[@name='userName']")
+	protected WebElement userNameFilterTB;
 
 
 
@@ -209,7 +212,6 @@ public class CommonPage {
 		}
 	}
 	public void information_Icon_IsDisplay(String tcID) throws InterruptedException {
-		//Map<String, String> mapDatas=   datas.getTestCaseData(tcID);
 		Thread.sleep(5000);
 		boolean status=util.getElementIsDisplay(information_Icon);
 
@@ -263,6 +265,33 @@ public class CommonPage {
 
 		clickOnCrossButton();
 
+	}
+	public void resetButtonStatus(String tcID) {
+	     boolean status=util.getElementIsEnable(resetBT);
+	 	 if(status==true) {
+	 		util.getExtentTest().log(Status.PASS,"Reset Button Expected Status  True and Actule -> "+status);	
+ 	 
+	 	 }else {
+		 	util.getExtentTest().log(Status.FAIL,"Reset Button Expected Status  True and Actule -> "+status);	
+ 
+	 	 }
+		
+		clickOnCrossButton();
+
+	}
+	public void crossButtonStatus() {
+	boolean actuleStatus=util.getElementIsDisplay(crossBT);
+	      if(actuleStatus==true) {
+			 	util.getExtentTest().log(Status.PASS,"Cross Button  Expected Status  True and Actule -> "+actuleStatus);	
+  
+	    	  
+	      }else {
+			 	util.getExtentTest().log(Status.FAIL,"Cross Button  Expected Status  True and Actule -> "+actuleStatus);	
+
+	      }
+	
+	      clickOnCrossButton();
+	
 	}
 
 }

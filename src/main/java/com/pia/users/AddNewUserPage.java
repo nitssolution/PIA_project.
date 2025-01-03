@@ -282,7 +282,9 @@ public class AddNewUserPage extends CommonPage {
 		util.sendValue(comfirmPassowrdTB, mapDatas.get("ConfirmPassowrd"));
 
 		util.click(AssociatedBrandDropDun);
+		
 		select_Brand(mapDatas.get("Brand"));
+		
 
 		util.click(saveBT);
 		

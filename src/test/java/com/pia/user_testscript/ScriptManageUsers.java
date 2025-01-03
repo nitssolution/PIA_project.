@@ -1,5 +1,6 @@
 package com.pia.user_testscript;
 
+import org.openqa.selenium.support.FindBy;
 import org.testng.annotations.Test;
 
 import com.pia.commonpage.CommonPage;
@@ -58,7 +59,7 @@ public class ScriptManageUsers extends BaseClass {
 	/*This method will verify  Filter Button  On users page  for Manage user module  */
 	@Test(priority = 5)
 
-	public void verifyTC018_FliterButton_IsEnable_OnUI() {
+	public void verifyTC018_FliterButton() {
 		CommonPage common= new CommonPage();
 		common.clickOnMenuBT();
 		common.nevigatManageUsersPage();
@@ -87,7 +88,7 @@ public class ScriptManageUsers extends BaseClass {
 	
 	
 	@Test(priority = 8)
-	public void verifyTc021_ApplyButton() {
+	public void verifyTC021_ApplyButton() {
 		CommonPage common= new CommonPage();
 		common.clickOnMenuBT();
 		common.nevigatManageUsersPage();
@@ -98,7 +99,7 @@ public class ScriptManageUsers extends BaseClass {
 
 	}
 	@Test(priority = 9)
-	public void verifyTC022_FilterTextBoxNames() {
+	public void verifyTC022_FilterTextBoxFieldNames() {
 		CommonPage common= new CommonPage();
 		common.clickOnMenuBT();
 		common.nevigatManageUsersPage();
@@ -107,7 +108,7 @@ public class ScriptManageUsers extends BaseClass {
 
 	}
 	@Test(priority = 10)
-	public void verifyTC023_FilterBrandOption() throws InterruptedException {
+	public void verifyTC023_FilterBrandOptions() throws InterruptedException {
 		CommonPage common= new CommonPage();
 		common.clickOnMenuBT();
 		common.nevigatManageUsersPage();
@@ -119,7 +120,7 @@ public class ScriptManageUsers extends BaseClass {
 
 	}
 	@Test(priority = 11)
-public void verifyTC024_Job_Role_Options() throws InterruptedException {
+public void verifyTC024_FilterJob_Role_Options() throws InterruptedException {
 	CommonPage common= new CommonPage();
 	common.clickOnMenuBT();
 	common.nevigatManageUsersPage();
@@ -127,6 +128,56 @@ public void verifyTC024_Job_Role_Options() throws InterruptedException {
 	ManageUserPage manageUser=  new ManageUserPage();
 	manageUser.getjob_Role_Option("TC024");
 }
+
 	
+	/* */
+	@Test
+	public void verifyTC025_Reset_Button() {
+		CommonPage common= new CommonPage();
+		common.clickOnMenuBT();
+		common.nevigatManageUsersPage();
+		common.clickOnFilterBT();
+		ManageUserPage manageUser=  new ManageUserPage();
+		manageUser.resetButtonStatus("TC025");
+	}
+	
+	/*
+	 * 
+	 * public void verifyTC026_UserSearchByFilter() { CommonPage common= new
+	 * CommonPage(); common.clickOnMenuBT(); common.nevigatManageUsersPage();
+	 * common.clickOnFilterBT(); ManageUserPage manageUser= new ManageUserPage();
+	 * manageUser.searchNameByFilter("TC026");
+	 * 
+	 * }
+	 */
+	
+	@Test
+	public void verifyTC027_CrossButton() {
+		CommonPage common= new CommonPage();
+		common.clickOnMenuBT();
+		common.nevigatManageUsersPage();
+		common.clickOnFilterBT();
+		ManageUserPage manageUser=  new ManageUserPage();
+		manageUser.crossButtonStatus();
+		
+	}
+	@Test
+	public void VerifyTC028_ColumnHeaderNames() {
+		CommonPage common= new CommonPage();
+		common.clickOnMenuBT();
+		common.nevigatManageUsersPage();
+ 		ManageUserPage manageUser=  new ManageUserPage();
+ 		manageUser.getColumnHeadarNames("TC028");
+			
+	}
+	@Test
+	public void VerifyTC029_UserNameSearchFilter() {
+		CommonPage common= new CommonPage();
+		common.clickOnMenuBT();
+		common.nevigatManageUsersPage();
+ 		ManageUserPage manageUser=  new ManageUserPage();
+ 		manageUser.searchUsernameByUsernameFilter("TC029");
+		
+	}
 	
 }

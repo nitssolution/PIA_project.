@@ -23,7 +23,7 @@ public class BaseClass {
    @BeforeSuite
 	public void beforeSuite() {
 	      
-	   String date=	  new SimpleDateFormat("-dd-MM-yyyy__HH_MM_SS-").format(new Date());
+       String date = new SimpleDateFormat("-dd-MM-yyyy__hh_mm_ss_a-").format(new Date());
 		extent=	new ExtentReports();
 		ExtentSparkReporter spark=	   new ExtentSparkReporter(System.getProperty("user.dir")+"//target//Test-Output//ExtentdReport//PIA "+date+".html");
 		extent.attachReporter(spark);	 

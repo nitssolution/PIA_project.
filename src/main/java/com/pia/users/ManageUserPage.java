@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.lang.model.element.Element;
 
 import org.checkerframework.checker.fenum.qual.AwtAlphaCompositingRule;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -73,6 +74,9 @@ public class ManageUserPage extends CommonPage {
 
 	@FindBy(xpath = "//div[@id='userJobTitle-sel-text']")
 	private WebElement filterJob_RoleField;
+	
+	@FindBy(xpath = "//tr[@class='agile_sort']//th[@class='header_th agile_filter  tooltip']")
+	private List<WebElement> column_headerNames;
 
 
 
@@ -156,7 +160,8 @@ public class ManageUserPage extends CommonPage {
 	}
 	public void filterBrandOption(String tcID) throws InterruptedException {
 		Map<String, String> mapData=  data.getTestCaseData(tcID);
-
+		
+         util.click(filterBrand);
 		List<String> listwe=  util.getTextList(filterBrandOption);
 
 		Assert.assertEquals(listwe.get(1), mapData.get("Audi"));
@@ -203,5 +208,100 @@ public class ManageUserPage extends CommonPage {
 
 
 	}
+	
+	public void searchNameByFilter(String  tcID) {
+		Map<String, String> mapData=  data.getTestCaseData(tcID);
+		
+		util.sendValue(userNameFilterTB, mapData.get(""));
+		
+        util.click(filterBrand);
+        select_FilterBrand(mapData.get(""));
+        
+        util.click(filterJob_RoleField);
+        select_FilterRole(mapData.get(""));
+        
+        util.click(applyBT);
+        
+	
+	}
+	
+public void	select_FilterBrand(String value){
+	  WebElement we; 
+	
+	try {
+
+	   we=util.getDriver().findElement(By.xpath("//ul[@id='userBrand-list-ul']//li//span[contains(text(),'"+value+"')]"));
+		util.visibilityOfElement(we, 60);
+	    util.mouseOver(we);
+		util.mouseClick(we);
+		util.getExtentTest().log(Status.PASS, "Filter Brand  Is Selected   Successfully ");
+ 
+	  }catch(Exception e) {
+		util.getExtentTest().log(Status.FAIL, "Filter Brand  Is Not  Selected  ");
+
+		  
+	  }
+	
+		
+	}
+
+public void	select_FilterRole(String value){
+	  WebElement we; 
+	
+	try {
+
+	   we=util.getDriver().findElement(By.xpath("//ul[@id='userJobTitle-list-ul']//li//span[contains(text(),'"+value+"')]"));
+		util.visibilityOfElement(we, 60);
+	    util.mouseOver(we);
+		util.mouseClick(we);
+		util.getExtentTest().log(Status.PASS, "Filter Role  Is Selected   Successfully ");
+
+	  }catch(Exception e) {
+		util.getExtentTest().log(Status.FAIL, "Filter Role  Is Not  Selected  ");
+
+		  
+	  }
+	
+		
+	}
+
+public void getColumnHeadarNames(String tcID) {
+	 
+	Map<String, String> mapData=  data.getTestCaseData(tcID);
+
+List<String > actuleListName=	util.getTextList(column_headerNames);
+   
+Assert.assertEquals(actuleListName.get(0), "Username");
+Assert.assertEquals(actuleListName.get(1), mapData.get("Brand"));
+Assert.assertEquals(actuleListName.get(2), mapData.get("Email"));
+Assert.assertEquals(actuleListName.get(3), mapData.get("Role"));
+util.getExtentTest().log(Status.PASS, "Column Header Names Are Matched  Successfully ");
+
+
+	
+}
+public void searchUsernameByUsernameFilter(String tcID) {
+	useColumnFilterByCloumnName("Brand");
+	
+	
+	
+}
+
+public void useColumnFilterByCloumnName(String columnName) {
+	try {
+	WebElement we=	util.getDriver().findElement(By.xpath("//th[@id='"+columnName+"']//i[@data-title='Apply filter on this column']"));
+
+	util.elementToBeClickable(we, 60); 
+	util.mouseClick(we);	
+	util.getExtentTest().log(Status.INFO, "Clicked On Column Header "+columnName+" Filter  Successfully ");
+	
+	}catch(Exception e) {
+		util.getExtentTest().log(Status.FAIL, " Not  Clicked On Column Header "+columnName+" Filter  ");
+
+		e.getMessage();
+	}
+	
+}
+
 
 }

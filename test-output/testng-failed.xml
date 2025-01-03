@@ -3,18 +3,18 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.pia.user_testscript.ScriptUsersNewAccount">
+      <class name="com.pia.user_testscript.ScriptManageUsers">
         <methods>
-          <include name="verifyTC013_UserCancelUserAccount"/>
           <include name="BeforeTest"/>
           <include name="afterTest"/>
+          <include name="VerifyTC028_Verify_ColumnHeaderNames"/>
           <include name="beforeSuite"/>
           <include name="aftersuite"/>
           <include name="BeforeClass"/>
           <include name="afterMothod"/>
           <include name="BedforeMethod"/>
         </methods>
-      </class> <!-- com.pia.user_testscript.ScriptUsersNewAccount -->
+      </class> <!-- com.pia.user_testscript.ScriptManageUsers -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
